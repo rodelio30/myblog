@@ -1,36 +1,39 @@
-
 <% if user_signed_in? %>
-<h1>My Account</h1>
+  <h1>My Account</h1>
 <% else %>
-<h1>Please Login First</h1>
+  <h1>Please Login First</h1>
 <% end %>
+  <hr>
 
-<hr>
-  <div class="row">
-    <div class="col-md-8 mx-auto">
-<h4>
-  <strong>
     <div class="row">
-      <div class="col-8">
-        <%= @account.name %>
-      </div>
-      <div class="col-4">
-        <%= @account.position %>
-      </div>
+      <div class="col-md-8 mx-auto">
+          <h4>
+            <strong>
+              <div class="row">
+                <div class="col-8">
+                  <%= @account.name %>
+                </div>
+                <div class="col-4">
+                  <%= @account.position %>
+                </div>
+              </div>
+          </strong>
+          </h4>
+        <br><br>
+        <table class="table table-striped">
+        <tbody>
+          <%= render @account.comments %>
+        </tbody>
+      </table>
+      <%= render "comments/form" %>
     </div>
-</strong>
-</h4>
+  </div>
 
-<p>
-</p>
-<br><br>
 
-</div>
-</div>
-<% if user_signed_in? %>
-<%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
-<%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary' %>
-<% else %>
-<%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
+  <% if user_signed_in? %>
+  <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
+  <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary' %>
+  <% else %>
+  <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
 
-<% end %>
+  <% end %>

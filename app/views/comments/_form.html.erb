@@ -1,0 +1,15 @@
+
+  <%= form_for ([@account, @account.comments.build]) do |f| %>
+    <%= f.text_field :content, class:'form-control', placeholder:'Enter new comment', autofocus: 'true' %>
+    <br>
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <% if user_signed_in? %>
+          <%= f.submit :Submit, class:'form-control btn btn-outline-primary '%>
+        <% else %>
+          <%= link_to "Submit", new_user_session_path, data: { confirm: 'Please Login First'},class:'form-control btn btn-outline-primary '%>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
