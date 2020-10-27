@@ -1,0 +1,63 @@
+<% if user_signed_in? %>
+<div class="row">
+
+<div class="col-md-8 mx-auto">
+<h1>Accounts</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th colspan="2">Name</th>
+      <th colspan="2">Position</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td colspan="2"><%= link_to account.name, account, class:'text-dark' %></td>
+        <td colspan="2"><%= account.position %></td>
+
+        <td>
+        <%= link_to 'Delete', account, method: :delete, data: { confirm: 'Are you sure?' }, class:'glyphicon glyphicon-trash' %>
+          <span class="glyphican glyphican-edit"></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Account', new_account_path, class:'btn btn-outline-success' %>
+</div>
+</div>
+
+
+
+<% else %>
+<div class="row">
+
+<div class="col-md-8 mx-auto">
+  <h2>Please do Sign in First</h2>
+  <h3>This is the list of all accounts</h3>
+<table class="table table-striped">
+  <thead class="thead-white">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= link_to account.name, account, class:'text-dark' %></td>
+
+        <td><%= account.position %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+<% end %>
