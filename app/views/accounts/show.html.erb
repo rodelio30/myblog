@@ -26,14 +26,17 @@
         </tbody>
       </table>
       <%= render "comments/form" %>
+      <br>
+      <% if user_signed_in? %>
+      <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
+      <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary' %>
+      <%= link_to 'Delete', @account, method: :delete, data: { confirm: 'Are you sure?'}, class:'btn btn-outline-danger' %>
+
+      <% else %>
+      <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
+
+      <% end %>
     </div>
   </div>
 
-
-  <% if user_signed_in? %>
-  <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
-  <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary' %>
-  <% else %>
-  <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
-
-  <% end %>
+<br>
