@@ -1,7 +1,6 @@
 <%= form_for ([@account, @account.comments.build]) do |f| %>
   <%= f.text_field :name, class:'form-control', :value => current_user.username,
       placeholder:'Enter your name', readonly:'true', style:'display:none'%>
-        <br>
         <%= f.text_area :content, class:'form-control',
             placeholder:'Enter new comment', autofocus: 'true', required:'true' %>
         <br>
