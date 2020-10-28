@@ -1,0 +1,29 @@
+<div class="row">
+<div class="col-md-8 mx-auto">
+  <h2>Please do Sign in First</h2>
+  <h3>This is the list of all accounts</h3>
+    <table class="table">
+      <tbody>
+        <% @accounts.each do |account| %>
+          <tr>
+            <td><%= link_to account.name, account, class:'text-success' %>
+              <br>
+              <% if account.position.length > 50 %>
+               <%= truncate(account.position, length: 50) %>
+               <%= link_to '...Read more', account, class:'text-warning' %>
+               <script>
+                 $('.read-more-<%= account.id %>').on('click', function(e) {
+                   e.preventDefault()
+                   $(this).parent().html('<%= escape_javascript account.position %>')
+                 })
+               </script>
+              <% else %>
+               <%= account.position %>
+              <% end %>
+              </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

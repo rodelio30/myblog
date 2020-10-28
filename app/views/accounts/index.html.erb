@@ -1,41 +1,5 @@
 <% if user_signed_in? %>
-<div class="row">
-  <div class="col-md-8 mx-auto">
-    <h1>Posts</h1>
-      <table class="table border">
-        <tbody>
-          <% @accounts.each do |account| %>
-            <tr>
-              <td colspan="2"><%= link_to account.name, account, class:'text-success' %><br>
-            <%= account.position %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <br>
-    <%= link_to 'New Post', new_account_path, class:'btn btn-outline-success' %>
-  </div>
-</div>
+  <%= render 'list_signed_in' %>
 <% else %>
-<div class="row">
-
-<div class="col-md-8 mx-auto">
-  <h2>Please do Sign in First</h2>
-  <h3>This is the list of all accounts</h3>
-    <table class="table">
-      <tbody>
-        <% @accounts.each do |account| %>
-          <tr>
-            <td><%= link_to account.name, account, class:'text-success' %>
-              <br>
-            <%= account.position %></td>
-
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-</div>
-
-</div>
-
+  <%= render 'list_public' %>
 <% end %>

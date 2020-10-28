@@ -1,20 +1,30 @@
+
 <tr>
-      <td><%= comment.content %></td>
+    <td>
+      <div class="row">
+        <div class="col-3">
+          Name: <%= comment.name %>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col-8 border-left">
+          <%= comment.content %>
+        </div>
+      </div>
 
-      <% if user_signed_in? %>
-      <td style="width:60%;"></td>
-      <td>
+      <div style="float:right">
+
         <br>
+          <%= link_to "Reply", account_comment_path(@account, comment.id),
+              method: :delete, data: { confirm: 'Are you sure?' },
+              class:'text-dark', style: 'padding-right:5px' %>
 
-        <%= link_to "Reply", account_comment_path(@account, comment.id),
-         method: :delete, data: { confirm: 'Are you sure?' },
-         class:'text-dark'%>
-         <%= link_to "Delete", account_comment_path(@account, comment.id),
-          method: :delete, data: { confirm: 'Are you sure?' },
-          class:'text-dark'%>
-
+          <%= link_to " Delete", account_comment_path(@account, comment.id),
+              method: :delete, data: { confirm: 'Are you sure?' },
+              class:'text-dark'%>
+      </div>
       </td>
-      <% else %>
-      <td></td>
-      <% end %>
-    </tr>
+      <% if user_signed_in? %>
+    <% else %>
+  <% end %>
+</tr>

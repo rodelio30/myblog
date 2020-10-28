@@ -7,23 +7,21 @@
 
     <div class="row">
       <div class="col-md-8 mx-auto">
-          <h6 class="form-control"style="height:150px; padding: 1%">
-            <strong>
-                  <%= @account.position%>
-          </strong>
-          </h6>
+              <textarea class="form-control" style="height:50%;" readonly="true">
+              <%= @account.position %>
+            </textarea>
         <table class="table border">
         <tbody>
           <%= render @account.comments %>
         </tbody>
       </table>
       <%= render "comments/form" %>
-
       <% if user_signed_in? %>
       <%= link_to 'Back', accounts_path, class:'btn btn-dark btn-sm' %>
       <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary btn-sm' %>
       <%= link_to 'Delete', @account, method: :delete, data: { confirm: 'Are you sure?'}, class:'btn btn-danger btn-sm' %>
-
+      <br>
+      <br>
       <% else %>
       <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark btn-sm' %>
 

@@ -25,7 +25,7 @@ private
   end
 
   def comment_params
-    params[:comment].permit(:content)
+    params[:comment].permit(:name, :content)
   end
 
 end
