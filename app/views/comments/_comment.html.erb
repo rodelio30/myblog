@@ -2,7 +2,9 @@
 <tr>
       <td><%= comment.content %></td>
       <% if user_signed_in? %>
-      <td><%= link_to "Delete", account_comment_path(@account, comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class:'text-dark'%></td>
+      <td><%= link_to "Delete", account_comment_path(@account, comment.id),
+         method: :delete, data: { confirm: 'Are you sure?' },
+        class:'text-dark', style:'float:right'%></td>
       <% else %>
       <td></td>
       <% end %>
