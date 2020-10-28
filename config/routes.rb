@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :mytags
   resources :accounts do
     resources :comments
   end

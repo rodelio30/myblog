@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
-  has_many :comments, dependent: :destroy
+  belongs_to :mytag
+  has_many   :comments, dependent: :destroy
 
   validates :name, presence: true
 end
