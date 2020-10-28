@@ -1,13 +1,4 @@
-
-<h1>Mytags</h1>
-
 <table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <% @mytags.each do |mytag| %>
@@ -20,7 +11,5 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Mytag', new_mytag_path %>

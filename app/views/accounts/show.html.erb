@@ -17,19 +17,17 @@
         </tbody>
       </table>
       <%= render "comments/form" %>
-      <% if user_signed_in? %>
-      <%= link_to 'Back', accounts_path, class:'btn btn-dark btn-sm' %>
-      <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary btn-sm' %>
-      <%= link_to 'Delete', @account, method: :delete, data: { confirm: 'Are you sure?'}, class:'btn btn-danger btn-sm' %>
-      <br>
-      <br>
-      <% else %>
-      <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark btn-sm' %>
-      <br>
-      <br>
-
-
-      <% end %>
+        <% if user_signed_in? %>
+          <%= link_to 'Back', accounts_path, class:'btn btn-dark btn-sm' %>
+            <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary btn-sm' %>
+              <%= link_to 'Delete', @account, method: :delete, data: { confirm: 'Are you sure?'}, class:'btn btn-danger btn-sm' %>
+                <br>
+            <br>
+        <% else %>
+          <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark btn-sm' %>
+            <br>
+          <br>
+        <% end %>
     </div>
   </div>
 

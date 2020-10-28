@@ -28,7 +28,7 @@ class MytagsController < ApplicationController
 
     respond_to do |format|
       if @mytag.save
-        format.html { redirect_to @mytag, notice: 'Mytag was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Mytag was successfully created.' }
         format.json { render :show, status: :created, location: @mytag }
       else
         format.html { render :new }

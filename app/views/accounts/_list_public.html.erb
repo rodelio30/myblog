@@ -1,8 +1,8 @@
 <div class="row">
-<div class="col-md-8 mx-auto">
-  <h4>This is the list of all Posts</h4>
+<div class="col-md-8">
   <h2>Please do Sign in First</h2>
-    <table class="table">
+  <h4>This is the list of all Posts</h4>
+    <table class="table border">
       <tbody>
         <% @accounts.each do |account| %>
           <tr>
@@ -25,5 +25,22 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="col-md-4">
+    <div class="card bg-light">
+      <div class="list-group list-group-flush">
+        <h4 class="ml-3 mt-2">Tags</h4>
+      </div>
+      <div class="card-body bg-white">
+        <ul class="list-group">
+          <% @mytags.each do |mytag| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= link_to mytag.category, accounts_path(:cate => mytag.id)%>
+                  <span class="badge badge-primary badge-pill"><%= mytag.accounts.count %></span>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

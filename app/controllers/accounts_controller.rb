@@ -4,8 +4,14 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @mytag = Mytag.all
-    @accounts = Account.all
+    @mytags = Mytag.all
+
+    cate = params[:cate]
+    if !cate.nil?
+      @accounts = Account.where(:mytag_id => cate)
+    else
+      @accounts = Account.all
+    end
   end
 
   # GET /accounts/1
