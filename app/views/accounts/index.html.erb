@@ -1,53 +1,39 @@
 <% if user_signed_in? %>
 <div class="row">
-
-<div class="col-md-8 mx-auto">
-<h1>Posts</h1>
-<table class="table border">
-  <thead class="thead-dark">
-
-  </thead>
-  <tbody>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td colspan="2"><%= link_to account.name, account, class:'text-success' %><br>
-      <%= account.position %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<%= link_to 'New Post', new_account_path, class:'btn btn-outline-success' %>
+  <div class="col-md-8 mx-auto">
+    <h1>Posts</h1>
+      <table class="table border">
+        <tbody>
+          <% @accounts.each do |account| %>
+            <tr>
+              <td colspan="2"><%= link_to account.name, account, class:'text-success' %><br>
+            <%= account.position %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+    <%= link_to 'New Post', new_account_path, class:'btn btn-outline-success' %>
+  </div>
 </div>
-</div>
-
-
-
 <% else %>
 <div class="row">
 
 <div class="col-md-8 mx-auto">
   <h2>Please do Sign in First</h2>
   <h3>This is the list of all accounts</h3>
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Position</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td><%= link_to account.name, account, class:'text-dark' %></td>
+    <table class="table">
+      <tbody>
+        <% @accounts.each do |account| %>
+          <tr>
+            <td><%= link_to account.name, account, class:'text-success' %>
+              <br>
+            <%= account.position %></td>
 
-        <td><%= account.position %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
 </div>

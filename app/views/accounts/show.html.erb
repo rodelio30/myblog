@@ -7,7 +7,7 @@
 
     <div class="row">
       <div class="col-md-8 mx-auto">
-          <h6 class="border"style="height:150px; padding: 1%">
+          <h6 class="form-control"style="height:150px; padding: 1%">
             <strong>
                   <%= @account.position%>
           </strong>
@@ -20,12 +20,12 @@
       <%= render "comments/form" %>
 
       <% if user_signed_in? %>
-      <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
-      <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary' %>
-      <%= link_to 'Delete', @account, method: :delete, data: { confirm: 'Are you sure?'}, class:'btn btn-outline-danger' %>
+      <%= link_to 'Back', accounts_path, class:'btn btn-dark btn-sm' %>
+      <%= link_to 'Edit', edit_account_path(@account), class:'btn btn-outline-primary btn-sm' %>
+      <%= link_to 'Delete', @account, method: :delete, data: { confirm: 'Are you sure?'}, class:'btn btn-danger btn-sm' %>
 
       <% else %>
-      <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark' %>
+      <%= link_to 'Back', accounts_path, class:'btn btn-outline-dark btn-sm' %>
 
       <% end %>
     </div>

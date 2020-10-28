@@ -8,9 +8,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+
     @comment.destroy
     redirect_to @account
   end
+
 
 private
 
@@ -19,7 +21,7 @@ private
   end
 
   def set_comment
-    @comment = @account.comments.find(params[:id])
+  @comment = @account.comments.find(params[:id])
   end
 
   def comment_params
