@@ -28,7 +28,7 @@ class MytagsController < ApplicationController
 
     respond_to do |format|
       if @mytag.save
-        format.html { redirect_to root_path, notice: 'Mytag was successfully created.' }
+        format.html { redirect_to root_path, success: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @mytag }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MytagsController < ApplicationController
   def update
     respond_to do |format|
       if @mytag.update(mytag_params)
-        format.html { redirect_to @mytag, notice: 'Mytag was successfully updated.' }
+        format.html { redirect_to root_path, info: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @mytag }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class MytagsController < ApplicationController
   def destroy
     @mytag.destroy
     respond_to do |format|
-      format.html { redirect_to mytags_url, notice: 'Mytag was successfully destroyed.' }
+      format.html { redirect_to root_path, danger: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

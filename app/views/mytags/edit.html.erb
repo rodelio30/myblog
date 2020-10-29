@@ -1,6 +1,11 @@
-<h1>Editing Mytag</h1>
+<div class="row">
+    <div class="col-md-4 mx-auto">
+  <h1>Editing Tag</h1>
 
-<%= render 'form', mytag: @mytag %>
+  <%= render 'form', mytag: @mytag %>
+<br>
+  <%= link_to 'Back', root_path, class:'btn btn-outline-dark' %>
 
-<%= link_to 'Show', @mytag %> |
-<%= link_to 'Back', mytags_path %>
+  <%= link_to 'Delete', @mytag, method: :delete, data: { confirm: "Delete This?"}, class:'btn btn-outline-danger' %>
+</div>
+</div>
