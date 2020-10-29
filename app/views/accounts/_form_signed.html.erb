@@ -1,11 +1,11 @@
 <%= form_for ([@account, @account.comments.build]) do |f| %>
   <%= f.text_field :name, class:'form-control', :value => current_user.username,
       placeholder:'Enter your name', readonly:'true', style:'display:none'%>
-        <%= f.text_area :content, class:'form-control',
+        <%= f.text_area :content, class:'form-control mb-2',
             placeholder:'Enter new comment', autofocus: 'true', required:'true' %>
-        <br>
+
   <div class="row">
-     <div class="col-md-4 mx-auto">
+     <div class="col-md-2 ml-auto">
           <%= f.submit :Submit, class:'form-control btn btn-outline-primary btn-sm '%>
      </div>
   </div>
