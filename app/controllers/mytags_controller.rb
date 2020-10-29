@@ -56,7 +56,7 @@ class MytagsController < ApplicationController
   def destroy
     @mytag.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, danger: 'Category was successfully destroyed.' }
+      format.html { redirect_to root_path, danger: 'Category was successfully deleted.' }
       format.json { head :no_content }
     end
   end
