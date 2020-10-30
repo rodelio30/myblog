@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_120343) do
+ActiveRecord::Schema.define(version: 2020_10_30_013539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,38 @@ ActiveRecord::Schema.define(version: 2020_10_28_120343) do
     t.index ["account_id"], name: "index_comments_on_account_id"
   end
 
+  create_table "dotaggings", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "dotag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_dotaggings_on_account_id"
+    t.index ["dotag_id"], name: "index_dotaggings_on_dotag_id"
+  end
+
+  create_table "dotags", force: :cascade do |t|
+    t.string "tagname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "mytags", force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_taggings_on_account_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
-    t.string "category"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -57,4 +81,8 @@ ActiveRecord::Schema.define(version: 2020_10_28_120343) do
   end
 
   add_foreign_key "comments", "accounts"
+  add_foreign_key "dotaggings", "accounts"
+  add_foreign_key "dotaggings", "dotags"
+  add_foreign_key "taggings", "accounts"
+  add_foreign_key "taggings", "tags"
 end

@@ -4,14 +4,14 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @mytags = Mytag.all
+        @mytags = Mytag.all
+        cate = params[:cate]
+        if !cate.nil?
+          @accounts = Account.where(:mytag_id => cate)
+        else
+          @accounts = Account.all
+        end
 
-    cate = params[:cate]
-    if !cate.nil?
-      @accounts = Account.where(:mytag_id => cate)
-    else
-      @accounts = Account.all
-    end
   end
 
   # GET /accounts/1
@@ -76,6 +76,6 @@ class AccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:name, :position, :mytag_id)
+      params.require(:account).permit(:name, :position, :mytag_id, :tag_list)
     end
 end

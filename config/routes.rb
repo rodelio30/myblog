@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get 'tags/:tag', to: 'accounts#index', as: :tag
   resources :mytags
   resources :accounts do
     resources :comments
