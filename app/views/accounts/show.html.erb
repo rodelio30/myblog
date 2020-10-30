@@ -17,6 +17,9 @@
             <p>
               <%= @account.position %>
             </p>
+            <p>Tags:
+              <%= raw @account.tags.map(&:name).map { |t| link_to t, tag_path(t), class:'text-dark'}.join(', ') %>
+            </p>
         <table class="table border">
         <tbody>
           <%= render @account.comments %>
