@@ -5,13 +5,15 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
         @mytags = Mytag.all
+        @tags = Tag.all
+
         cate = params[:cate]
+
         if !cate.nil?
           @accounts = Account.where(:mytag_id => cate)
         else
-          @accounts = Account.all
+          tage_cond
         end
-
   end
 
   # GET /accounts/1
@@ -78,4 +80,14 @@ class AccountsController < ApplicationController
     def account_params
       params.require(:account).permit(:name, :position, :mytag_id, :tag_list)
     end
+
+    def tage_cond
+      tage = params[:tage]
+      if !tage.nil?
+        @accounts = Account.where(:tag_list => tage)
+      else
+        @accounts = Account.all
+      end
+    end
+
 end
