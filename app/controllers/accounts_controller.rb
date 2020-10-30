@@ -12,8 +12,15 @@ class AccountsController < ApplicationController
         if !cate.nil?
           @accounts = Account.where(:mytag_id => cate)
         else
-          tage_cond
+          # tage_cond
+          if params[:tag]
+            @accounts = Account.tagged_with(params[:tag])
+          else
+            @accounts = Account.all
+          end
         end
+
+
   end
 
   # GET /accounts/1

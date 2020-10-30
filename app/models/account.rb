@@ -8,7 +8,7 @@ class Account < ApplicationRecord
   has_many :tags, through: :taggings
 
   def self.tagged_with(name)
-    Tag.find_by_name!(name).articles
+    Tag.find_by_name!(name).accounts
   end
 
   def self.tag_counts
