@@ -35,7 +35,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, success: 'Post was successfully created.' }
+        format.html { redirect_to root_path, success: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }
