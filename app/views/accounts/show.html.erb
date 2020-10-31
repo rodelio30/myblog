@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
     <center><h1><%= @account.name%></h1></center>
     <div style="float:right">
-      Tag: <%= @account.mytag.category%>
+      Category: <%= @account.mytag.category%>
     </div>
 <% else %>
 <center><h1><%= @account.name%></h1></center>
   <div style="float:right">
-    Tag: <%= @account.mytag.category%>
+    Category: <%= @account.mytag.category%>
   </div>
 <% end %>
 <br>
