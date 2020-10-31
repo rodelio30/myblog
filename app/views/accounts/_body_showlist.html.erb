@@ -1,0 +1,28 @@
+<% @accounts.each do |account| %>
+  <tr>
+    <td colspan="2">
+      <span class="fa fa-lf fa-trash"></span>
+      <%= link_to account.name, account, class:'text-success' %>
+      <%= link_to 'Delete', account, method: :delete, data: { confirm: "Sure?" }, class:'btn btn-outline-danger', style:'float:right' %>
+      <br>
+      <% if account.position.length > 50 %>
+       <%= truncate(account.position, length: 50) %>
+       <%= link_to '...Read more', account, class:'text-warning' %>
+       <script>
+         $('.read-more-<%= account.id %>').on('click', function(e) {
+           e.preventDefault()
+           $(this).parent().html('<%= escape_javascript account.position %>')
+         })
+       </script>
+      <% else %>
+       <%= account.position %>
+      <% end %>
+      <p>Tags:
+        <%= raw account.tags.map(&:name).map { |t| link_to t, tag_path(t), class:'text-dark'}.join(', ') %>
+      </p>
+      <p>Created at:
+        <%= time_ago_in_words(account.created_at)%>
+      </p>
+    </td>
+  </tr>
+<% end %>

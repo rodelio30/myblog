@@ -11,76 +11,13 @@
     </div>
       <table class="table border">
         <tbody>
-          <% @accounts.each do |account| %>
-            <tr>
-              <td colspan="2">
-                <span class="fa fa-lf fa-trash"></span>
-                <%= link_to account.name, account, class:'text-success' %>
-                <%= link_to 'Delete', account, method: :delete, data: { confirm: "Sure?" }, class:'btn btn-outline-danger', style:'float:right' %>
-                <br>
-                <% if account.position.length > 50 %>
-                 <%= truncate(account.position, length: 50) %>
-                 <%= link_to '...Read more', account, class:'text-warning' %>
-                 <script>
-                   $('.read-more-<%= account.id %>').on('click', function(e) {
-                     e.preventDefault()
-                     $(this).parent().html('<%= escape_javascript account.position %>')
-                   })
-                 </script>
-                <% else %>
-                 <%= account.position %>
-                <% end %>
-                <p>Tags:
-                  <%= raw account.tags.map(&:name).map { |t| link_to t, tag_path(t), class:'text-dark'}.join(', ') %>
-                </p>
-                <p>Created at:
-                  <%= time_ago_in_words(account.created_at)%>
-                </p>
-              </td>
-            </tr>
-          <% end %>
-
+          <%= render 'body_showlist' %>
         </tbody>
       </table>
       <br>
   </div>
   <div class="col-md-4">
-    <div class="card">
-      <div class="list-group list-group-flush">
-        <h4 class="list-group-item d-flex justify-content-between align-items-center">
-          <%= link_to "All Category", root_path, class:'text-dark'%>
-          <span class="badge badge-pill"><%= link_to "New Category", new_mytag_path, class:'badge badge-success'%></span>
-          </h4>
-      </div>
-      <div class="card-body">
-        <ul class="list-group">
-          <% @mytags.each do |mytag| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-                <%= link_to mytag.category, accounts_path(:cate => mytag.id)%>
-                  <span class="badge badge-primary badge-pill"><%= link_to (mytag.accounts.count), edit_mytag_path(mytag), class:'text-light'%></span>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <br>
-    <div class="card">
-      <div class="list-group list-group-flush">
-        <h4 class="list-group-item d-flex justify-content-between align-items-center">
-          <%= link_to "All Tag", root_path, class:'text-dark'%>
-          </h4>
-      </div>
-        <div class="card-body">
-          <ul class="list-group">
-            <% @tags.each do |tag| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <%= link_to tag.name, tag_path(tag.name)%>
-                    <span class="badge badge-primary badge-pill"><%= tag.accounts.count%></span>
-            </li>
-            <% end %>
-          </ul>
-        </div>
-    </div>
-    <br>
+      <%= render 'card_category' %>
+      <%= render 'card_tag' %>
   </div>
 </div>
