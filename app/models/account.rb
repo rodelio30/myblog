@@ -3,9 +3,14 @@ class Account < ApplicationRecord
   has_many   :comments, dependent: :destroy
 
   validates :name, presence: true
+  validates :position, presence: true
+  validates :tag_list, presence: true
+  validates :content, presence: true
+  validates :category, presence: true
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).accounts

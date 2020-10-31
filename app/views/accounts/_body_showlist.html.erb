@@ -1,10 +1,10 @@
 <% @accounts.each do |account| %>
   <tr>
-    <td colspan="2">
-      <span class="fa fa-lf fa-trash"></span>
-      <%= link_to account.name, account, class:'text-success' %>
-      <%= link_to 'Delete', account, method: :delete, data: { confirm: "Sure?" }, class:'btn btn-outline-danger', style:'float:right' %>
-      <br>
+    <td colspan="2" style="float:left">
+        <span>
+          Title: <%= link_to account.name, account, class:'text-success' %>
+          <%= link_to 'Delete', account, method: :delete, data: { confirm: "Sure?" }, class:'btn btn-outline-danger float-right'%>
+        </span>
       <% if account.position.length > 50 %>
        <%= truncate(account.position, length: 50) %>
        <%= link_to '...Read more', account, class:'text-warning' %>

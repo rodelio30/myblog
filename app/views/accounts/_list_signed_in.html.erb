@@ -1,21 +1,25 @@
 <div class="row">
   <div class="col-md-8">
-    <div class="row">
-      <div class="col-2">
+    <div class="card">
+      <div class="list-group list-group-flush">
+
+    <div class="list-group-item d-flex justify-content-between align-items-center">
         <h1>Posts</h1>
-      </div>
-      <div class="col-8"></div>
-      <div class="col-2">
         <%= link_to 'New Post', new_account_path, class:'btn btn-outline-success' %>
       </div>
-    </div>
-      <table class="table border">
-        <tbody>
-          <%= render 'body_showlist' %>
-        </tbody>
-      </table>
-      <br>
   </div>
+  <div class="card-body">
+    <ul class="list-group">
+      <% if @accounts.count != 0 %>
+        <%= render 'body_showlist' %>
+      <% else %>
+        <p>Empty Post</p>
+      <% end %>
+    </ul>
+  </div>
+      </div>
+  </div>
+
   <div class="col-md-4">
       <%= render 'card_category' %>
       <%= render 'card_tag' %>

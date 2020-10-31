@@ -13,15 +13,17 @@
 
   <body class="bg-light">
 
-    <div class="container">
       <%= render "shared/navbar"%>
+      <div class="container">
         <% flash.each do|name, msg|%>
           <div class="alert alert-<%= name %>">
               <%= msg %>
           </div>
         <% end %>
-<br>
-    <%= yield %>
-  </div>
+        <br>
+        <%= yield %>
+      </div>
+      <br><br>
+        <%= render 'shared/footer'%>
   </body>
 </html>
